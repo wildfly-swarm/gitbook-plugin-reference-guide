@@ -1,0 +1,28 @@
+{
+  "name": "gitbook-plugin-reference-guide",
+  "version": "1.0.0",
+  "description": "Generate Reference Guide Docs",
+  "engines": {
+    "gitbook": ">2.x.x"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildfly-swarm/gitbook-plugin-reference-guide.git"
+  },
+  "keywords": [
+    "gitbook"
+  ],
+  "author": "WildFly Swarm Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wildfly-swarm/gitbook-plugin-reference-guide/issues"
+  },
+  "homepage": "https://github.com/wildfly-swarm/gitbook-plugin-reference-guide#readme",
+  "dependencies": [
+    "file",
+    "unzip2",
+    "yaml-js",
+    "q"
+  ]
+}

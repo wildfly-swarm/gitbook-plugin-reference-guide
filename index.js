@@ -154,9 +154,6 @@ const generateDocs = (book, page)=>{
       page.content += "## Coordinates\n\n";
       page.content += values[2];
       page.content += "\n\n";
-      page.content += "## Dependencies\n\n";
-      page.content += values[3];
-      page.content += "\n\n";
       page.content += "## Configuration\n\n";
       if ( values[0] == "" ) {
         page.content += "This fraction has no configuration.";

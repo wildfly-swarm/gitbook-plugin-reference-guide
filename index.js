@@ -314,6 +314,7 @@ module.exports = {
     },
     'page:before': function(page) {
       if ( ! page.path.startsWith('fractions/')) {
+        console.log( "verbatim", page.path );
         return page;
       }
       return generateDocs(this, page);

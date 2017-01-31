@@ -141,15 +141,18 @@ const generateDocs = (book, page)=>{
     })
     .then( (values)=>{
       page.content += "\n";
+/*
       if ( values[1] ) {
         page.content += values[1];
       } else {
         page.content += "# " + page.title;
       }
       if ( values[3].stability && values[3].stability.level ) {
-      page.content += "\n\n";
+        page.content += "\n\n";
         page.content += "image::http://badges.github.io/stability-badges/dist/" + values[3].stability.level.toLowerCase() + ".svg[" + values[3].stability.level + "]";
       }
+*/
+      page.content += pageHeader(page, values[1], values[3] );
       page.content += "\n\n";
       page.content += "## Coordinates\n\n";
       page.content += values[2];
@@ -169,6 +172,38 @@ const generateDocs = (book, page)=>{
       return page;
     });
 
+}
+
+const pageHeader = (page, readme, manifest)=>{
+  var header = "";
+  var restOfReadme = "";
+
+  readme = readme.trim();
+
+  if ( ! readme ) {
+    header += "# " + page.title + "\n";
+  } else {
+    var results = new RegExp( "^(# [^\\n]*)\\n(.*)" ).exec(readme);
+    // console.log( "results", results );
+    if ( results ) {
+      header += results[1];
+      restOfReadme = readme.substring( results[1].length );
+    } else {
+      header += "# " + page.title + "\n";
+      restOfReadme = readme;
+    }
+  }
+
+  header += "\n\n";
+  if ( manifest.stability && manifest.stability.level ) {
+    header += "image::http://badges.github.io/stability-badges/dist/" + manifest.stability.level.toLowerCase() + ".svg[" + manifest.stability.level + "]";
+  } else {
+    header += "image::http://badges.github.io/stability-badges/dist/unstable.svg[UNSTABLE]";
+  }
+
+  header += restOfReadme;
+
+  return header;
 }
 
 const locateArtifact = (groupId, artifactId, ext)=>{

@@ -11,7 +11,7 @@ var unzip = require('unzip2');
 var yaml = require('yaml-js');
 
 var SNAPSHOT_REPO = "https://oss.sonatype.org/content/repositories/snapshots/";
-var RELEASE_REPO = "http://repo.maven.apache.org/maven2/";
+var RELEASE_REPO = "https://repo.maven.apache.org/maven2/";
 
 const extractZipEntry = (zipPath, entryPath)=>{
  var deferred = Q.defer();
